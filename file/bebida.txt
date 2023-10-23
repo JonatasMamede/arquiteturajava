@@ -1,0 +1,3 @@
+437;true;Lata
+1000;false;Plastico
+2000;true;Vidro
