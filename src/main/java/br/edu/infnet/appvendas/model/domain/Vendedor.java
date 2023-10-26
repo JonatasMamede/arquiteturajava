@@ -15,6 +15,7 @@ import javax.persistence.Transient;
 public class Vendedor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String nome;
 	private String cpf;
 	private String email;
