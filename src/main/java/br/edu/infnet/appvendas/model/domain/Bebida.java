@@ -1,6 +1,10 @@
 package br.edu.infnet.appvendas.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "TBebida")
 public class Bebida extends Produto{
 
 	private int pesoLiquido;

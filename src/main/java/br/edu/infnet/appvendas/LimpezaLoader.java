@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appvendas.model.service.LimpezaService;
 import br.edu.infnet.appvendas.model.domain.Limpeza;
+import br.edu.infnet.appvendas.model.domain.Vendedor;
 
 @Order(3)
 @Component
@@ -38,6 +39,11 @@ public class LimpezaLoader implements ApplicationRunner {
 			limpeza.setTamanho(Integer.valueOf(campos[0]));
 			limpeza.setFragancia(campos[1]);
 			limpeza.setTipo(campos[2]);
+			
+			Vendedor vendedor = new Vendedor();
+			vendedor.setId(Integer.valueOf(campos[3]));			
+			
+			limpeza.setVendedor(vendedor);
 			
 			LimpezaService.incluir(limpeza);
 									

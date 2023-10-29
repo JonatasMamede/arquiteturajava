@@ -1,4 +1,4 @@
-001;cerveja;true;5;437;true;Lata;B
-002;desengordurante;true;15;300;Rosas;Cozinha;L
-003;refrigerante;false;10;1000;false;Plastico;B
-004;desinfetante;true;35;200;Lavanda;Banheiro;L
+001;cerveja;true;5;437;true;Lata;B;1
+002;desengordurante;true;15;300;Rosas;Cozinha;L;1
+003;refrigerante;false;10;1000;false;Plastico;B;4
+004;desinfetante;true;35;200;Lavanda;Banheiro;L;4

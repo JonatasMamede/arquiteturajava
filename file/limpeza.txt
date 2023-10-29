@@ -1,3 +1,3 @@
-300;Rosas;Cozinha
-200;Lavanda;Banheiro
-700;Flores do Campo;Lavanderia
+300;Rosas;Cozinha;2
+200;Lavanda;Banheiro;3
+700;Flores do Campo;Lavanderia;3

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import br.edu.infnet.appvendas.model.domain.Limpeza;
 import br.edu.infnet.appvendas.model.domain.Bebida;
 import br.edu.infnet.appvendas.model.domain.Produto;
+import br.edu.infnet.appvendas.model.domain.Vendedor;
 import br.edu.infnet.appvendas.model.service.ProdutoService;
 
 @Order(2)
@@ -31,9 +32,12 @@ public class ProdutoLoader implements ApplicationRunner {
 
 		String[] campos = null;
 
+		Vendedor vendedor = new Vendedor();
+		
 		while(linha != null) {
 			
 			campos = linha.split(";");
+
 			
 			switch (campos[7]) {
 			case "L":
@@ -45,6 +49,10 @@ public class ProdutoLoader implements ApplicationRunner {
 				limpeza.setTamanho(Integer.valueOf(campos[4]));
 				limpeza.setFragancia(campos[5]);
 				limpeza.setTipo(campos[6]);
+
+				vendedor.setId(Integer.valueOf(campos[8]));			
+				
+				limpeza.setVendedor(vendedor);
 				
 				produtoService.incluir(limpeza);
 				
@@ -59,6 +67,10 @@ public class ProdutoLoader implements ApplicationRunner {
 				bebida.setPesoLiquido(Integer.valueOf(campos[4]));
 				bebida.setAlcoolica(Boolean.valueOf(campos[5]));
 				bebida.setEmbalagem(campos[6]);
+
+				vendedor.setId(Integer.valueOf(campos[8]));
+				
+				bebida.setVendedor(vendedor);
 				
 				produtoService.incluir(bebida);
 				
@@ -74,6 +86,7 @@ public class ProdutoLoader implements ApplicationRunner {
 		for(Produto produto: produtoService.obterLista()) {
 			System.out.println("[Produto] " + produto);			
 		}
+		
 		
 		leitura.close();
 		

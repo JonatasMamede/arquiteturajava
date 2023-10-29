@@ -9,8 +9,9 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import br.edu.infnet.appvendas.model.service.BebidaService;
 import br.edu.infnet.appvendas.model.domain.Bebida;
+import br.edu.infnet.appvendas.model.domain.Vendedor;
+import br.edu.infnet.appvendas.model.service.BebidaService;
 
 @Order(4)
 @Component
@@ -38,6 +39,11 @@ public class BebidaLoader implements ApplicationRunner {
 			bebida.setPesoLiquido(Integer.valueOf(campos[0]));
 			bebida.setAlcoolica(Boolean.valueOf(campos[1]));
 			bebida.setEmbalagem(campos[2]);
+			
+			Vendedor vendedor = new Vendedor();
+			vendedor.setId(Integer.valueOf(campos[3]));
+			
+			bebida.setVendedor(vendedor);
 			
 			BebidaService.incluir(bebida);
 									

@@ -6,8 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 
 @Entity
@@ -19,14 +20,21 @@ public class Vendedor {
 	private String nome;
 	private String cpf;
 	private String email;
-	@Transient
+	@OneToMany
+	@JoinColumn(name = "idVendedor")
 	private List<Produto> produtos;
 	
 	@Override
 	public String toString() {
-		return String.format("%s - %s - %s", nome, cpf, email);
+		return String.format("%d - %s - %s - %s", id, nome, cpf, email);
 	}
-	
+			
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public String getNome() {
 		return nome;
 	}
