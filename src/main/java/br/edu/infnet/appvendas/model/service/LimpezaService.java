@@ -21,4 +21,8 @@ public class LimpezaService {
 	public Collection<Limpeza> obterLista(){	
 		return (Collection<Limpeza>) limpezaRepository.findAll();
 	}
+	
+	public long obterQtd() {
+		return limpezaRepository.count();
+	}
 }
