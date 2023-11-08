@@ -3,6 +3,7 @@ package br.edu.infnet.appvendas;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -45,8 +46,12 @@ public class BebidaLoader implements ApplicationRunner {
 			
 			bebida.setVendedor(vendedor);
 			
-			BebidaService.incluir(bebida);
-									
+			try {
+				BebidaService.incluir(bebida);				
+			}catch(ConstraintViolationException e){
+				FileLogger.logException("[BEBIDA]" + bebida + " - "+ e.getMessage());
+			}
+			
 			linha = leitura.readLine();
 		}
 

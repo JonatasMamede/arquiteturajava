@@ -2,12 +2,16 @@ package br.edu.infnet.appvendas.model.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 @Entity
 @Table(name = "TBebida")
 public class Bebida extends Produto{
-
+	
+	@Positive
 	private int pesoLiquido;
+	@NotNull
 	private boolean alcoolica;
 	private String embalagem;
 

@@ -36,8 +36,7 @@
 	  	<span class="badge rounded-pill bg-secondary">Produto: ${qtdProduto}</span>
 	  	<span class="badge rounded-pill bg-success">Bebidas: ${qtdBebida}</span>
 	  	<span class="badge rounded-pill bg-danger">Limpeza: ${qtdLimpeza}</span>
-  	
-  	
+  	  	
   		<c:if test="${not empty listagem }">
 			<h2>AppVenda</h2>
 			<p>Gestão de vendas de produtos:</p>
@@ -45,6 +44,7 @@
 				<thead class="table-dark">
 					<tr>
 					  <th>${titulo}</th>
+					  <th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -52,6 +52,7 @@
 				
 						<tr>
 						  <td>${item}</td>
+						  <td><a href="/${rota}/${item.id}/excluir" >excluir</a></td>
 						</tr>
 					
 					</c:forEach>

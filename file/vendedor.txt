@@ -1,4 +1,4 @@
-Jonatas de Souza Mamede;231.654.987-45;jonatas@email.com
-Aira Neri;458.587.458-96;aira@email.com
-Joao Amado;323.554.525-54;joao@email.com
-Maria Josefa;985.658.784-52;maria@email.com
+Jonatas de Souza Mamede;231.654.987-45;jonatas@email.com;29216150
+Aira Neri;458.587.458-96;aira@email.com;29215170
+Joao Amado;323.554.525-54;joao@email.com;22733000
+Maria Josefa;985.658.784-52;maria@email.com;22640102

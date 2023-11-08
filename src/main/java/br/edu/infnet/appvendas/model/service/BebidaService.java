@@ -16,8 +16,12 @@ public class BebidaService {
 	
 	public void incluir(Bebida bebida) {
 		bebidaRepository.save(bebida);
+	}		
+
+	public void excluir(Integer id) {
+		bebidaRepository.deleteById(id);
 	}
-		
+	
 	public Collection<Bebida> obterLista(){	
 		return (Collection<Bebida>) bebidaRepository.findAll();
 	}

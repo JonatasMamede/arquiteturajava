@@ -16,6 +16,10 @@ public class LimpezaService {
 	
 	public void incluir(Limpeza limpeza) {
 		limpezaRepository.save(limpeza);
+	}	
+
+	public void excluir(Integer id) {
+		limpezaRepository.deleteById(id);
 	}
 	
 	public Collection<Limpeza> obterLista(){	

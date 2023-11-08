@@ -2,10 +2,13 @@ package br.edu.infnet.appvendas.model.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.PositiveOrZero;
 
 @Entity
 @Table(name = "TLimpeza")
 public class Limpeza extends Produto{
+	
+	@PositiveOrZero
 	private int tamanho;
 	private String fragancia;
 	private String tipo;

@@ -3,6 +3,7 @@ package br.edu.infnet.appvendas;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -44,8 +45,12 @@ public class LimpezaLoader implements ApplicationRunner {
 			vendedor.setId(Integer.valueOf(campos[3]));			
 			
 			limpeza.setVendedor(vendedor);
-			
-			LimpezaService.incluir(limpeza);
+
+			try {
+				LimpezaService.incluir(limpeza);				
+			}catch(ConstraintViolationException e){
+				FileLogger.logException("[LIMPEZA]" + limpeza + " - "+ e.getMessage());
+			}
 									
 			linha = leitura.readLine();
 		}

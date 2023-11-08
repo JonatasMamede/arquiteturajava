@@ -2,24 +2,28 @@ package br.edu.infnet.appvendas.model.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-
 @Entity
-@Table(name = "TVendedor", uniqueConstraints = {
-		@UniqueConstraint(columnNames = {"cpf"}),
-		@UniqueConstraint(columnNames = {"email"})
+@Table(name = "TVendedor", 
+	uniqueConstraints = {
+			@UniqueConstraint(columnNames = {"cpf"}),
+			@UniqueConstraint(columnNames = {"email"})
 		})
+
 public class Vendedor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,21 +36,32 @@ public class Vendedor {
 	@Size(min = 2, max = 50)
 	@Column(unique = true)
 	private String email;
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idVendedor")
 	private List<Produto> produtos;
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "idEndereco")
+	private Endereco endereco;
 	
 	@Override
 	public String toString() {
-		return String.format("%d - %s - %s - %s", id, nome, cpf, email);
+		return String.format("id (%d) - nome (%s) - cpf (%s) - email (%s) - Produtos: (%d) - Endereço: (%s)", 
+				id, 
+				nome, 
+				cpf, 
+				email, 
+				produtos != null ? produtos.size() : 0
+			    ,endereco);
 	}
-			
+	
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -70,5 +85,11 @@ public class Vendedor {
 	}
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
+	}
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 }

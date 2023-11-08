@@ -17,6 +17,10 @@ public class ProdutoService {
 	public void incluir(Produto produto) {
 		produtoRepository.save(produto);
 	}
+
+	public void excluir(Integer id) {
+		produtoRepository.deleteById(id);
+	}
 	
 	public Collection<Produto> obterLista(){	
 		return (Collection<Produto>) produtoRepository.findAll();

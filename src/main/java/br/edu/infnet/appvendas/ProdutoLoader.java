@@ -3,6 +3,7 @@ package br.edu.infnet.appvendas;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -54,7 +55,11 @@ public class ProdutoLoader implements ApplicationRunner {
 				
 				limpeza.setVendedor(vendedor);
 				
-				produtoService.incluir(limpeza);
+				try {
+					produtoService.incluir(limpeza);				
+				}catch(ConstraintViolationException e){
+					FileLogger.logException("[PRODUTO - LIMPEZA]" + limpeza + " - "+ e.getMessage());
+				}
 				
 				break;
 
@@ -72,7 +77,11 @@ public class ProdutoLoader implements ApplicationRunner {
 				
 				bebida.setVendedor(vendedor);
 				
-				produtoService.incluir(bebida);
+				try {
+					produtoService.incluir(bebida);				
+				}catch(ConstraintViolationException e){
+					FileLogger.logException("[PRODUTO - BEBIDA]" + bebida + " - "+ e.getMessage());
+				}
 				
 				break;
 
