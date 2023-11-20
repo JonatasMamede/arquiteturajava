@@ -12,7 +12,11 @@ import br.edu.infnet.appvendas.model.repository.BebidaRepository;
 public class BebidaService {
 	
 	@Autowired
-	private BebidaRepository bebidaRepository; 
+	private BebidaRepository bebidaRepository;
+
+	public Collection<Bebida> pesquisar(String embalagem) {
+		return bebidaRepository.findByEmbalagem(embalagem);
+	}
 	
 	public void incluir(Bebida bebida) {
 		bebidaRepository.save(bebida);

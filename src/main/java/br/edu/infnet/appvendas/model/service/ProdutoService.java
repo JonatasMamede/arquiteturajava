@@ -14,6 +14,10 @@ public class ProdutoService {
 	@Autowired
 	private ProdutoRepository produtoRepository; 
 
+	public Produto pesquisar(String descricao) {
+		return produtoRepository.findByDescricao(descricao);
+	}
+	
 	public void incluir(Produto produto) {
 		produtoRepository.save(produto);
 	}

@@ -13,6 +13,11 @@ public class LimpezaService {
 
 	@Autowired
 	LimpezaRepository limpezaRepository;
+
+	public Collection<Limpeza> pesquisar(String fragancia) {
+		return limpezaRepository.findByFragancia(fragancia);
+	}
+	
 	
 	public void incluir(Limpeza limpeza) {
 		limpezaRepository.save(limpeza);
